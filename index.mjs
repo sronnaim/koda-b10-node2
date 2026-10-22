@@ -1,5 +1,6 @@
 import { stdin, stdout } from "node:process";
 import readline from "node:readline/promises";
+import moment from "moment";
 
 const rl = readline.createInterface({
   input: stdin,
@@ -54,4 +55,22 @@ async function main() {
   rl.close();
 }
 
-main();
+async function mainMoment() {
+  while (true) {
+    const answer = await ask("Tulis tanggal dengan format dd-mm-yyyy:");
+
+    const dateMmt = moment(answer, "DD-MM-YYYY", true);
+
+    if (!dateMmt.isValid()) {
+      console.log("Format tanggal salah");
+      continue;
+    }
+
+    console.log(dateMmt.format("DD/MM/YYYY"));
+    break;
+  }
+  rl.close();
+}
+
+// main();
+mainMoment();
