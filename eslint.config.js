@@ -4,39 +4,73 @@ import { defineConfig } from "eslint/config";
 import stylistic from "@stylistic/eslint-plugin";
 
 export default defineConfig([
-  { 
-    files: ["**/*.{js,mjs,cjs}"], 
-    plugins: { 
-      js, 
-      "@stylistic": stylistic 
-    }, 
+  { files: ["**/*.{js,mjs,cjs}"],
+    plugins: { js,
+      "@stylistic": stylistic },
     extends: ["js/recommended"],
-    rules: { 
-      "@stylistic/array-bracket-newline": [
-        "error", {
-          "multiline": true,
-          "minItems": 5
-        }
-      ],
+    rules: {
       "@stylistic/array-bracket-spacing": ["error", "never"],
       "@stylistic/arrow-parens": ["error", "always"],
       "@stylistic/arrow-spacing": "error",
-      "@stylistic/brace-style": ["error", "stroustrup"],
+      "@stylistic/block-spacing": ["error", "always"],
+      "@stylistic/brace-style": ["error", "1tbs", { allowSingleLine: false }],
+      "@stylistic/comma-dangle": [
+        "error", {
+          arrays: "always-multiline",
+          objects: "always-multiline",
+          imports: "always-multiline",
+          exports: "always-multiline",
+          functions: "always-multiline",
+        },
+      ],
+      "@stylistic/comma-spacing": "error",
+      "@stylistic/comma-style": ["error", "last"],
+      "@stylistic/computed-property-spacing": ["error", "never"],
       "@stylistic/dot-location": ["error", "property"],
       "@stylistic/eol-last": ["error", "always"],
-      "@stylistic/semi": ["error", "always"],
-      "@stylistic/curly-newline": ["error", "always"],
-      "@stylistic/function-call-argument-newline": ["error", "consistent"],
-      "@stylistic/function-paren-newline": ["error", { "minItems": 3 }],
-      "@stylistic/implicit-arrow-linebreak": ["error", "below"],
+      "@stylistic/function-call-spacing": ["error", "never"],
+      "@stylistic/implicit-arrow-linebreak": ["error", "beside"],
       "@stylistic/indent": ["error", 2],
-      "@stylistic/no-mixed-operators": "error",
+      "@stylistic/key-spacing": [
+        "error", { beforeColon: false,
+          afterColon: true },
+      ],
+      "@stylistic/keyword-spacing": "error",
+      "@stylistic/linebreak-style": ["error", "unix"],
       "@stylistic/no-floating-decimal": "error",
-      "@stylistic/nonblock-statement-body-position": ["error", "below"],
-      "@stylistic/object-property-newline": "error",
-      "@stylistic/quotes": ["error", "double"],
-      "@stylistic/spaced-comment": ["error", "always"],
+      "@stylistic/no-multi-spaces": "error",
+      "@stylistic/no-multiple-empty-lines": [
+        "error", { max: 1,
+          maxBOF: 0,
+          maxEOF: 0 },
+      ],
+      "@stylistic/no-trailing-spaces": "error",
+      "@stylistic/no-whitespace-before-property": "error",
+      "@stylistic/nonblock-statement-body-position": ["error", "beside"],
+      "@stylistic/object-curly-spacing": ["error", "always"],
+      "@stylistic/operator-linebreak": [
+        "error", "after", {
+          overrides: { "?": "before",
+            ":": "before" },
+        },
+      ],
+      "@stylistic/padded-blocks": ["error", "never"],
+      "@stylistic/quote-props": ["error", "as-needed"],
+      "@stylistic/quotes": ["error", "double", { avoidEscape: true }],
+      "@stylistic/semi": ["error", "always"],
+      "@stylistic/semi-spacing": "error",
+      "@stylistic/space-before-blocks": "error",
+      "@stylistic/space-before-function-paren": [
+        "error", {
+          anonymous: "always",
+          named: "never",
+          asyncArrow: "always",
+        },
+      ],
+      "@stylistic/space-in-parens": ["error", "never"],
+      "@stylistic/space-infix-ops": "error",
+      "@stylistic/space-unary-ops": "error",
+      "@stylistic/template-curly-spacing": ["error", "never"],
     },
-    languageOptions: { globals: globals.browser } 
-  },
+    languageOptions: { globals: globals.browser } },
 ]);
